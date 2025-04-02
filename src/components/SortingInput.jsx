@@ -3,7 +3,7 @@ import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 
 const SortingInput = ({ arraySize, setArraySize, resetArray }) => {
-  const [minVal] = useState(5);
+  const [minVal] = useState(10);
   const [maxVal] = useState(100);
   const [stepSize] = useState(1);
 
@@ -19,7 +19,7 @@ const SortingInput = ({ arraySize, setArraySize, resetArray }) => {
           <span className="mr-2">{minVal}</span>
 
           <Slider
-            defaultValue={[10]}
+            defaultValue={[15]}
             min={minVal}
             max={maxVal}
             step={stepSize}

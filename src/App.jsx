@@ -4,7 +4,7 @@ import SortingInput from "./components/SortingInput";
 import SortingWindow from "./components/SortingWindow";
 
 function App() {
-  const [arraySize, setArraySize] = useState(10);
+  const [arraySize, setArraySize] = useState(15);
   const [currArray, setCurrArray] = useState([]);
 
   useEffect(() => {

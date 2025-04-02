@@ -1,5 +1,11 @@
 import React, { useRef } from "react";
 import { cn } from "@/lib/utils";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const SortingWindow = ({ arraySize, currArray }) => {
   const sortingWindowRef = useRef();
@@ -25,14 +31,21 @@ const SortingWindow = ({ arraySize, currArray }) => {
           const currWidth = getBarWidth();
 
           return (
-            <div
-              key={idx}
-              className="bg-amber-600"
-              style={{
-                height: `${ele}px`,
-                width: `${currWidth}px`,
-              }}
-            />
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger>
+                  <div
+                    key={idx}
+                    className="bg-amber-600"
+                    style={{
+                      height: `${ele}px`,
+                      width: `${currWidth}px`,
+                    }}
+                  />
+                </TooltipTrigger>
+                <TooltipContent>{ele}</TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           );
         })}
       </div>
