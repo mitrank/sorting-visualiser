@@ -11,4 +11,8 @@ export const sortingAlgorithms = [
     id: "bubble",
     name: "Bubble Sort",
   },
+  {
+    id: "insertion",
+    name: "Insertion Sort",
+  },
 ];
