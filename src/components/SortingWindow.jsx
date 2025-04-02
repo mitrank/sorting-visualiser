@@ -1,27 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import { cn } from "@/lib/utils";
 
-const SortingWindow = ({ arraySize }) => {
-  const [currArray, setCurrArray] = useState([]);
+const SortingWindow = ({ arraySize, currArray }) => {
   const sortingWindowRef = useRef();
-
-  useEffect(() => {
-    setCurrArray(resetArray(5, 800));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [arraySize]);
-
-  const getRandomValue = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  };
-
-  const resetArray = (min, max) => {
-    const arr = [];
-    for (let i = 0; i < arraySize; i++) {
-      const randomValue = getRandomValue(min, max);
-      arr.push(randomValue);
-    }
-    return arr;
-  };
 
   const getBarWidth = () => {
     const containerWidth =
