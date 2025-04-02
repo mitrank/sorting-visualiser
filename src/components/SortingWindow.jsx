@@ -20,22 +20,38 @@ const SortingWindow = ({
   const sortingAlgorithms = useMemo(
     () => ({
       selectionSort: () => {
-        console.log("selectionSort algo starting here");
+        console.log("before", currArray);
+        for (let i = 0; i < currArray.length; i++) {
+          let mini = i;
+          for (let j = i + 1; j < currArray.length; j++) {
+            if (currArray[mini] > currArray[j]) {
+              mini = j;
+            }
+          }
+          if (i !== mini) {
+            [currArray[i], currArray[mini]] = [currArray[mini], currArray[i]];
+          }
+        }
+        console.log("after", currArray);
       },
+
       mergeSort: () => {
         console.log("mergeSort algo starting here");
       },
+
       bubbleSort: () => {
         console.log("bubbleSort algo starting here");
       },
+
       quickSort: () => {
         console.log("quickSort algo starting here");
       },
+
       insertionSort: () => {
         console.log("insertionSort algo starting here");
       },
     }),
-    []
+    [currArray]
   );
 
   const handleStartSorting = useCallback(() => {
