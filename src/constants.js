@@ -1,18 +1,18 @@
-export const sortingAlgorithms = [
+export const sortingAlgorithmsList = [
   {
-    id: "merge",
+    id: "mergeSort",
     name: "Merge Sort",
   },
   {
-    id: "quick",
+    id: "quickSort",
     name: "Quick Sort",
   },
   {
-    id: "bubble",
+    id: "bubbleSort",
     name: "Bubble Sort",
   },
   {
-    id: "insertion",
+    id: "insertionSort",
     name: "Insertion Sort",
   },
 ];

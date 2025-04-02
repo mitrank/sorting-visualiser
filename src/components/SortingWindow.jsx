@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useCallback, useEffect, useMemo, useRef } from "react";
 import { cn } from "@/lib/utils";
 import {
   Tooltip,
@@ -6,9 +6,50 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { sortingAlgorithmsList } from "../constants";
 
-const SortingWindow = ({ arraySize, currArray }) => {
+const SortingWindow = ({
+  arraySize,
+  currArray,
+  isSortingStarted,
+  setIsSortingStarted,
+  sortingAlgo,
+}) => {
   const sortingWindowRef = useRef();
+
+  const sortingAlgorithms = useMemo(
+    () => ({
+      mergeSort: () => {
+        console.log("mergeSort algo starting here");
+      },
+      bubbleSort: () => {
+        console.log("bubbleSort algo starting here");
+      },
+      quickSort: () => {
+        console.log("quickSort algo starting here");
+      },
+      insertionSort: () => {
+        console.log("insertionSort algo starting here");
+      },
+    }),
+    []
+  );
+
+  const handleStartSorting = useCallback(() => {
+    if (isSortingStarted) {
+      sortingAlgorithmsList.forEach((algo) => {
+        if (sortingAlgo === algo.id) {
+          sortingAlgorithms[algo.id]?.();
+        }
+      });
+    }
+    setIsSortingStarted(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sortingAlgo, isSortingStarted, sortingAlgorithms]);
+
+  useEffect(() => {
+    isSortingStarted && handleStartSorting();
+  }, [handleStartSorting, isSortingStarted, sortingAlgo]);
 
   const getBarWidth = () => {
     const containerWidth =

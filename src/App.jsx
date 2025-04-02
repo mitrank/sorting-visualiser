@@ -6,7 +6,8 @@ import SortingWindow from "./components/SortingWindow";
 function App() {
   const [arraySize, setArraySize] = useState(15);
   const [currArray, setCurrArray] = useState([]);
-  const [sortingAlgo, setSortingAlgo] = useState();
+  const [sortingAlgo, setSortingAlgo] = useState(undefined);
+  const [isSortingStarted, setIsSortingStarted] = useState(false);
 
   useEffect(() => {
     setCurrArray(resetArray(5, 800));
@@ -41,11 +42,14 @@ function App() {
           resetArray={resetArray}
           setSortingAlgo={setSortingAlgo}
           sortingAlgo={sortingAlgo}
+          setIsSortingStarted={setIsSortingStarted}
         />
         <SortingWindow
           arraySize={arraySize}
-          resetArray={resetArray}
           currArray={currArray}
+          isSortingStarted={isSortingStarted}
+          setIsSortingStarted={setIsSortingStarted}
+          sortingAlgo={sortingAlgo}
         />
       </div>
     </div>

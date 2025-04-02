@@ -8,7 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { sortingAlgorithms } from "../constants";
+import { sortingAlgorithmsList } from "../constants";
 
 const SortingInput = ({
   arraySize,
@@ -16,6 +16,7 @@ const SortingInput = ({
   resetArray,
   setSortingAlgo,
   sortingAlgo,
+  setIsSortingStarted,
 }) => {
   const [minVal] = useState(10);
   const [maxVal] = useState(100);
@@ -26,7 +27,7 @@ const SortingInput = ({
   };
 
   const handleArraySorting = () => {
-    console.log("sorting starts here!");
+    setIsSortingStarted(true);
   };
 
   return (
@@ -65,7 +66,7 @@ const SortingInput = ({
             <SelectValue placeholder="Select a Sorting Algorithm" />
           </SelectTrigger>
           <SelectContent>
-            {sortingAlgorithms.map((ele, idx) => (
+            {sortingAlgorithmsList.map((ele, idx) => (
               <SelectItem value={ele.id} key={idx}>
                 {ele.name}
               </SelectItem>
