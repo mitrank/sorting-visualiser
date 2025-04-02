@@ -1,5 +1,9 @@
 export const sortingAlgorithmsList = [
   {
+    id: "selectionSort",
+    name: "Selection Sort",
+  },
+  {
     id: "mergeSort",
     name: "Merge Sort",
   },

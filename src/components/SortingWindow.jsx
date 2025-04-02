@@ -19,6 +19,9 @@ const SortingWindow = ({
 
   const sortingAlgorithms = useMemo(
     () => ({
+      selectionSort: () => {
+        console.log("selectionSort algo starting here");
+      },
       mergeSort: () => {
         console.log("mergeSort algo starting here");
       },
