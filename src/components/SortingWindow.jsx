@@ -27,12 +27,12 @@ const SortingWindow = ({ arraySize, currArray }) => {
           arraySize > 50 && "gap-2"
         )}
       >
-        {currArray.map((ele, idx) => {
-          const currWidth = getBarWidth();
+        <TooltipProvider>
+          {currArray.map((ele, idx) => {
+            const currWidth = getBarWidth();
 
-          return (
-            <TooltipProvider>
-              <Tooltip>
+            return (
+              <Tooltip key={idx}>
                 <TooltipTrigger>
                   <div
                     key={idx}
@@ -45,9 +45,9 @@ const SortingWindow = ({ arraySize, currArray }) => {
                 </TooltipTrigger>
                 <TooltipContent>{ele}</TooltipContent>
               </Tooltip>
-            </TooltipProvider>
-          );
-        })}
+            );
+          })}
+        </TooltipProvider>
       </div>
     </section>
   );

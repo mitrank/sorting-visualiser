@@ -6,11 +6,16 @@ import SortingWindow from "./components/SortingWindow";
 function App() {
   const [arraySize, setArraySize] = useState(15);
   const [currArray, setCurrArray] = useState([]);
+  const [sortingAlgo, setSortingAlgo] = useState();
 
   useEffect(() => {
     setCurrArray(resetArray(5, 800));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [arraySize]);
+
+  useEffect(() => {
+    console.log("sorting algo chosen: ", sortingAlgo);
+  }, [sortingAlgo]);
 
   const getRandomValue = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -34,6 +39,8 @@ function App() {
           arraySize={arraySize}
           setArraySize={setArraySize}
           resetArray={resetArray}
+          setSortingAlgo={setSortingAlgo}
+          sortingAlgo={sortingAlgo}
         />
         <SortingWindow
           arraySize={arraySize}
