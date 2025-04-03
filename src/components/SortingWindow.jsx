@@ -13,6 +13,11 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { sortingAlgorithmsList } from "../constants";
+import selectionSort from "../algorithms/selectionSort";
+import bubbleSort from "../algorithms/bubbleSort";
+import insertionSort from "../algorithms/insertionSort";
+import mergeSort from "../algorithms/mergeSort";
+import quickSort from "../algorithms/quickSort";
 
 const SortingWindow = ({
   arraySize,
@@ -32,77 +37,12 @@ const SortingWindow = ({
   );
 
   const sortingAlgorithms = useMemo(() => {
-    const arr = [...currArray];
-
     const algorithms = {
-      selectionSort: async () => {
-        for (let i = 0; i < arr.length - 1; i++) {
-          let mini = i;
-
-          for (let j = i + 1; j < arr.length; j++) {
-            if (arr[mini] > arr[j]) {
-              mini = j;
-            }
-          }
-
-          if (i !== mini) {
-            [arr[i], arr[mini]] = [arr[mini], arr[i]];
-
-            setCurrArray([...arr]);
-            setActiveBars([i, mini]);
-            await delay(200);
-          }
-        }
-
-        setActiveBars([]);
-        setIsArraySorted(true);
-      },
-
-      mergeSort: () => console.log("mergeSort algo starting here"),
-
-      bubbleSort: async () => {
-        for (let i = arr.length - 1; i >= 0; i--) {
-          let didSwap = 0;
-
-          for (let j = 0; j < arr.length; j++) {
-            if (arr[j] > arr[j + 1]) {
-              [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
-
-              setCurrArray([...arr]);
-              setActiveBars([j, j + 1]);
-              await delay(200);
-
-              didSwap = 1;
-            }
-          }
-
-          if (didSwap == 0) break;
-        }
-
-        setActiveBars([]);
-        setIsArraySorted(true);
-      },
-
-      quickSort: () => console.log("quickSort algo starting here"),
-
-      insertionSort: async () => {
-        for (let i = 0; i < arr.length; i++) {
-          let j = i;
-
-          while (j > 0 && arr[j - 1] > arr[j]) {
-            [arr[j], arr[j - 1]] = [arr[j - 1], arr[j]];
-
-            setCurrArray([...arr]);
-            setActiveBars([j, j - 1]);
-            await delay(200);
-
-            j--;
-          }
-        }
-
-        setActiveBars([]);
-        setIsArraySorted(true);
-      },
+      selectionSort,
+      bubbleSort,
+      insertionSort,
+      mergeSort,
+      quickSort,
     };
 
     return algorithms;
@@ -115,7 +55,14 @@ const SortingWindow = ({
         (algo) => algo.id === sortingAlgo
       );
       if (selectedAlgo) {
-        sortingAlgorithms[selectedAlgo.id]?.();
+        const arr = [...currArray];
+        sortingAlgorithms[selectedAlgo.id]?.(
+          arr,
+          setCurrArray,
+          setActiveBars,
+          setIsArraySorted,
+          delay
+        );
       }
       setIsSortingStarted(false);
     }
