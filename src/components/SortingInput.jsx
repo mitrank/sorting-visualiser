@@ -16,11 +16,18 @@ const SortingInput = ({
   resetArray,
   setSortingAlgo,
   sortingAlgo,
+  isSortingStarted,
   setIsSortingStarted,
+  sortingSpeed,
+  setSortingSpeed,
 }) => {
   const [minVal] = useState(10);
   const [maxVal] = useState(100);
   const [stepSize] = useState(5);
+
+  const [ssMinVal] = useState(100);
+  const [ssMaxVal] = useState(500);
+  const [ssStepSize] = useState(50);
 
   const handleResetArray = () => {
     return resetArray(5, 800);
@@ -44,8 +51,9 @@ const SortingInput = ({
             step={stepSize}
             className="w-full dark"
             onValueChange={(val) => {
-              setArraySize(val);
+              setArraySize(val[0]);
             }}
+            disabled={isSortingStarted}
           />
           <span className="ml-2">{maxVal}</span>
         </div>
@@ -55,6 +63,7 @@ const SortingInput = ({
         className="ml-10 mr-10 -mt-5 hover:cursor-pointer"
         onClick={handleResetArray}
         variant="secondary"
+        disabled={isSortingStarted}
       >
         Reset Array
       </Button>
@@ -79,10 +88,32 @@ const SortingInput = ({
         className="ml-10 mr-10 -mt-5 hover:cursor-pointer"
         onClick={handleArraySorting}
         variant="secondary"
-        disabled={!sortingAlgo}
+        disabled={!sortingAlgo || isSortingStarted}
       >
         Sort Array
       </Button>
+
+      <div className="flex flex-col justify-center m-10">
+        <h4 className="text-lg font-semibold mb-2">
+          Sorting Speed: {sortingSpeed}ms
+        </h4>
+        <div className="flex flex-row w-full justify-center">
+          <span className="mr-2">{ssMinVal}</span>
+
+          <Slider
+            defaultValue={[300]}
+            min={ssMinVal}
+            max={ssMaxVal}
+            step={ssStepSize}
+            className="w-full dark"
+            onValueChange={(val) => {
+              setSortingSpeed(val[0]);
+            }}
+            disabled={isSortingStarted}
+          />
+          <span className="ml-2">{ssMaxVal}</span>
+        </div>
+      </div>
     </section>
   );
 };

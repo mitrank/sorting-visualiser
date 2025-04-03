@@ -26,6 +26,7 @@ const SortingWindow = ({
   isSortingStarted,
   setIsSortingStarted,
   sortingAlgo,
+  sortingSpeed,
 }) => {
   const sortingWindowRef = useRef();
   const [activeBars, setActiveBars] = useState([]);
@@ -49,19 +50,20 @@ const SortingWindow = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currArray]);
 
-  const handleStartSorting = useCallback(() => {
+  const handleStartSorting = useCallback(async () => {
     if (isSortingStarted) {
       const selectedAlgo = sortingAlgorithmsList.find(
         (algo) => algo.id === sortingAlgo
       );
       if (selectedAlgo) {
         const arr = [...currArray];
-        sortingAlgorithms[selectedAlgo.id]?.(
+        await sortingAlgorithms[selectedAlgo.id]?.(
           arr,
           setCurrArray,
           setActiveBars,
           setIsArraySorted,
-          delay
+          delay,
+          sortingSpeed
         );
       }
       setIsSortingStarted(false);

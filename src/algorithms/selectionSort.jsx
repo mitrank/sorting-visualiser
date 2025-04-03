@@ -3,7 +3,8 @@ const selectionSort = async (
   setCurrArray,
   setActiveBars,
   setIsArraySorted,
-  delay
+  delay,
+  sortingSpeed
 ) => {
   for (let i = 0; i < arr.length - 1; i++) {
     let mini = i;
@@ -19,7 +20,7 @@ const selectionSort = async (
 
       setCurrArray([...arr]);
       setActiveBars([i, mini]);
-      await delay(200);
+      await delay(sortingSpeed);
     }
   }
 

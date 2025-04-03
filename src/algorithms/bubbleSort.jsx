@@ -3,7 +3,8 @@ const bubbleSort = async (
   setCurrArray,
   setActiveBars,
   setIsArraySorted,
-  delay
+  delay,
+  sortingSpeed
 ) => {
   for (let i = arr.length - 1; i >= 0; i--) {
     let didSwap = 0;
@@ -14,7 +15,7 @@ const bubbleSort = async (
 
         setCurrArray([...arr]);
         setActiveBars([j, j + 1]);
-        await delay(200);
+        await delay(sortingSpeed);
 
         didSwap = 1;
       }

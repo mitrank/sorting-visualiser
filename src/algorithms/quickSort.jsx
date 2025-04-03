@@ -3,7 +3,8 @@ const quickSort = async (
   setCurrArray,
   setActiveBars,
   setIsArraySorted,
-  delay
+  delay,
+  sortingSpeed
 ) => {
   let low = 0,
     high = arr.length - 1;
@@ -27,7 +28,7 @@ const quickSort = async (
 
         setCurrArray([...arr]);
         setActiveBars([i, j]);
-        await delay(200);
+        await delay(sortingSpeed);
       }
     }
 
@@ -35,7 +36,7 @@ const quickSort = async (
 
     setCurrArray([...arr]);
     setActiveBars([i, low]);
-    await delay(200);
+    await delay(sortingSpeed);
 
     return j;
   };

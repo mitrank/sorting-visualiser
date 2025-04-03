@@ -3,7 +3,8 @@ const insertionSort = async (
   setCurrArray,
   setActiveBars,
   setIsArraySorted,
-  delay
+  delay,
+  sortingSpeed
 ) => {
   for (let i = 0; i < arr.length; i++) {
     let j = i;
@@ -13,7 +14,7 @@ const insertionSort = async (
 
       setCurrArray([...arr]);
       setActiveBars([j, j - 1]);
-      await delay(200);
+      await delay(sortingSpeed);
 
       j--;
     }

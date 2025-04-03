@@ -3,7 +3,8 @@ const mergeSort = async (
   setCurrArray,
   setActiveBars,
   setIsArraySorted,
-  delay
+  delay,
+  sortingSpeed
 ) => {
   let low = 0,
     high = arr.length - 1;
@@ -38,7 +39,7 @@ const mergeSort = async (
 
       setCurrArray([...arr]);
       setActiveBars([i, i - low]);
-      await delay(200);
+      await delay(sortingSpeed);
     }
   };
 
