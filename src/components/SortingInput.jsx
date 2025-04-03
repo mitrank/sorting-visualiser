@@ -20,7 +20,7 @@ const SortingInput = ({
 }) => {
   const [minVal] = useState(10);
   const [maxVal] = useState(100);
-  const [stepSize] = useState(1);
+  const [stepSize] = useState(5);
 
   const handleResetArray = () => {
     return resetArray(5, 800);

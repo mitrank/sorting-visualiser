@@ -47,6 +47,7 @@ function App() {
         <SortingWindow
           arraySize={arraySize}
           currArray={currArray}
+          setCurrArray={setCurrArray}
           isSortingStarted={isSortingStarted}
           setIsSortingStarted={setIsSortingStarted}
           sortingAlgo={sortingAlgo}
