@@ -104,7 +104,7 @@ const SortingWindow = ({
   const renderBars = useMemo(() => {
     return currArray.map((ele, idx) => {
       const isActiveIdx = activeBars.includes(idx);
-      console.log("testttt hre");
+
       return (
         <Tooltip key={idx}>
           <TooltipTrigger>
